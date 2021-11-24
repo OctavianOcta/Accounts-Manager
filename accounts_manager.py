@@ -1,19 +1,6 @@
 #this program will add your accounts into a json
 #you can search the document by the name of the website,pwd or email address
 
-"""
-Nu o sa l termin in seara asta asa ca asta e ideea programului:
-o lista de dictionare, feicare dictionar avand ca si key:
--website
--email address
--nickname
--password
-
-A se adauga o functie de a cauta in document si a arata toate jsoanele care se potrivesc unui criteriu de cautare( probabil key respectiva idk)
-
-OPTIONAL: cripteaza parolele
-"""
-
 import json
 from cryptography.fernet import Fernet
 
@@ -30,36 +17,6 @@ def create_account():
     return account
 # se creaza un dictionar cu datele contului
 
-def encrypting():
-    #this generates a key and opens a file 'key.key' and writes the key there
-    key = Fernet.generate_key()
-    with open('key.key','wb') as file:
-        file.write(key)
-
-    #this just opens your 'key.key' and assings the key stored there as 'key'
-    with open('key.key','rb') as file:
-        key = file.read()
-
-    #this opens your json and reads its data into a new variable called 'data'
-    with open(FILENAME,'rb') as f:
-        data = f.read()
-
-    #this encrypts the data read from your json and stores it in 'encrypted'
-    fernet = Fernet(key)
-    encrypted = fernet.encrypt(data)
-
-    #this writes your new, encrypted data into a new JSON file
-    with open(FILENAME,'wb') as f:
-        f.write(encrypted)
-
-    return encrypted
-
-def decrypting(encrypted):
-    with open('key.key','rb') as file:
-        key = file.read()
-    
-    fernet = Fernet(key)
-    fernet.decrypt(encrypted)
 
 def creating_a_list_with_all_the_accounts():
     with open(FILENAME,'r+') as file:
@@ -160,7 +117,7 @@ def add_or_remove(choice,acc_lis):
         with open(FILENAME, "w") as file:
             json.dump(file_data, file, indent = 4)
 
-# trebuia deschisa fila de 2 ori, o data cu r pentru a incarca datele si inca o data cu w pentru a muta cursorul la inceput si a rescrie tot cacatul :(
+
 def start():
     
     
@@ -171,10 +128,6 @@ def start():
         choice = add_or_remove_menu()
         add_or_remove(choice,acc_lis)
         
-        # for encoding check crypting test.py
-        #still not finished :(
-            #should i store encrypted info 
-            #then decrypt, use and then encrypt again and store it back?
-            #idfk
+
 
 start()
