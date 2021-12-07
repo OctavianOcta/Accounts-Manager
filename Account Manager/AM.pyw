@@ -1,14 +1,3 @@
-""" BUGS:
-
-    Change colors of buttons so it can be easier to notice
-    Make the winow resizable
-    
-    Make an executable for it
-    
-    Comment the code
-"""
-
-
 from tkinter import *
 from tkinter import ttk
 from ttkthemes import ThemedTk
